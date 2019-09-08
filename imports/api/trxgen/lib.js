@@ -83,8 +83,10 @@ function generate(
       date,
       amount,
       merchantAccount: merchant.account,
+      merchant: merchant.account,
       merchantCategory: merchant.category,
       category: merchant.category,
+      merchantReferenceNote: referenceNote,
       referenceNote
     }
 

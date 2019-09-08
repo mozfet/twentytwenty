@@ -36,7 +36,7 @@ const merchants = [
     startAmount: 50,
     endAmount: 120,
     reference() {
-      const code = transactions.random(50000, 100000)
+      const code = transactions.random(50, 100000)
       return `Unleaded 95 - ${code}`
     }
   },
@@ -46,7 +46,7 @@ const merchants = [
     startAmount: 500,
     endAmount: 2000,
     reference() {
-      const code = transactions.random(50000, 100000)
+      const code = transactions.random(100000, 999999)
       return `KLM Electronic Ticket ${code}`
     }
   }

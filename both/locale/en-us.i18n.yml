@@ -85,7 +85,7 @@ account.error.usernameExists: Username already exists
 transactions.header: Transactions
 transactions.warning.login: You should be logged in to view this page.
 transactions.table.date: Date
-transactions.table.from: From
+transactions.table.merchant: Merchant
 transactions.table.reference: Reference
 transactions.table.amount: Amount
 transactions.table.category: Category

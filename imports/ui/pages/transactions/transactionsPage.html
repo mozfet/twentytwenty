@@ -8,7 +8,7 @@
             <thead>
               <tr>
                   <th>{{__ "MFS.transactions.table.date"}}</th>
-                  <th>{{__ "MFS.transactions.table.from"}}</th>
+                  <th>{{__ "MFS.transactions.table.merchant"}}</th>
                   <th>{{__ "MFS.transactions.table.reference"}}</th>
                   <th>{{__ "MFS.transactions.table.amount"}}</th>
                   <th>{{__ "MFS.transactions.table.category"}}</th>
@@ -19,9 +19,9 @@
               {{#each transaction in transactions}}
                 <tr>
                   <td>{{formatDate transaction.date}}</td>
-                  <td>{{transaction.merchantAccount}}</td>
+                  <td>{{transaction.merchant}}</td>
                   <td>{{transaction.referenceNote}}</td>
-                  <td>{{transaction.amount}}</td>
+                  <td>&euro; {{transaction.amount}}</td>
                   <td>
                     {{transaction.category}}
                   </td>

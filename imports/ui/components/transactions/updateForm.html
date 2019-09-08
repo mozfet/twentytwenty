@@ -1,4 +1,13 @@
 <template name="updateTransactionForm">
-  {{this.transaction.referenceNote}} {{this.transaction.amount}}
+
+  <p>
+    {{formatDate this.transaction.date}}
+    {{this.transaction.merchantAccount}}
+    {{this.transaction.merchantReferenceNote}}
+    &euro; {{this.transaction.amount}}
+  </p>
+
+  {{> afFieldInput name="merchant"}}
+  {{> afFieldInput name="referenceNote"}}
   {{> afFieldInput name="category"}}
 </template>

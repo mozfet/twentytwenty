@@ -20,14 +20,27 @@ const schema = new SimpleSchema({
   merchantAccount: {
     type: String
   },
+  merchant: {
+    type: String,
+    label: i18n.__('GYR.transactions.table.merchant')
+  },
   merchantCategory: {
     type: String
   },
   category: {
+    type: String,
+    label: i18n.__('GYR.transactions.table.category')
+  },
+  userCategory: {
+    type: String,
+    required: false
+  },
+  merchantReferenceNote: {
     type: String
   },
   referenceNote: {
-    type: String
+    type: String,
+    label: i18n.__('GYR.transactions.table.reference')
   },
   amount: {
     type: Number

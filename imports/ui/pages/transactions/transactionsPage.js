@@ -31,11 +31,9 @@ Template.transactionsPage.onRendered(() => {
 Template.transactionsPage.helpers({
   transactions() {
     const instance = Template.instance()
-    const result = Transactions.find({ownerId: Meteor.userId()}).fetch()
+    const result = Transactions.find(
+        {ownerId: Meteor.userId()}, {sort: {date: -1, merchantAccount: 1}}).fetch()
     return result
-  },
-  formatDate(date) {
-    return moment(date).format('YYYY-MM-DD')
   }
 })
 

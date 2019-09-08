@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { Session } from 'meteor/session'
 import { Access } from 'meteor/mozfet:access'
+import moment from 'moment'
 import { check, Match } from 'meteor/check'
 
 export let globalSubscriptionHandler
@@ -40,6 +41,10 @@ Tracker.autorun(() => {
 // register global template helper
 Template.registerHelper('isGlobalSubscriptionReady', function() {
   return globalSubscriptionHandler?globalSubscriptionHandler.ready():false
+})
+
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format('YYYY-MM-DD')
 })
 
 // register global template helper
