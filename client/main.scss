@@ -33,6 +33,10 @@ html, body {
   color: $link-color;
 }
 
+.activity:hover {
+  cursor: pointer;
+}
+
 .header {
   color: $primary-color;
 }

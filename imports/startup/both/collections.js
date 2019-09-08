@@ -11,6 +11,9 @@ Transactions = new Mongo.Collection('transactions')
 Transactions.allow(Access.anyCreateAdminOwnersUpdateRemove)
 
 const schema = new SimpleSchema({
+  ownerId: {
+    type: String
+  },
   date: {
     type: Date
   },

@@ -3,31 +3,41 @@
     <div class="row">
       <div class="col s12">
         {{>DynaText tag="h1" class="header" text=(__ "MFS.transactions.header")}}
-        <table>
-          <thead>
-            <tr>
-                <th>Date</th>
-                <th>From</th>
-                <th>Reference</th>
-                <th>Amount</th>
-                <th>Category</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each transaction in transactions}}
+        {{#if currentUser}}
+          <table>
+            <thead>
               <tr>
-                <td>{{formatDate transaction.date}}</td>
-                <td>{{transaction.merchantAccount}}</td>
-                <td>{{transaction.referenceNote}}</td>
-                <td>{{transaction.amount}}</td>
-                <td>
-                  {{transaction.category}}
-                  <i id="{{transaction._id}}" class="material-icons left js-edit-transaction">edit</i>
-                </td>
+                  <th>{{__ "MFS.transactions.table.date"}}</th>
+                  <th>{{__ "MFS.transactions.table.from"}}</th>
+                  <th>{{__ "MFS.transactions.table.reference"}}</th>
+                  <th>{{__ "MFS.transactions.table.amount"}}</th>
+                  <th>{{__ "MFS.transactions.table.category"}}</th>
+                  <th></th>
               </tr>
-            {{/each}}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {{#each transaction in transactions}}
+                <tr>
+                  <td>{{formatDate transaction.date}}</td>
+                  <td>{{transaction.merchantAccount}}</td>
+                  <td>{{transaction.referenceNote}}</td>
+                  <td>{{transaction.amount}}</td>
+                  <td>
+                    {{transaction.category}}
+                  </td>
+                  <td>
+                    <i id="{{transaction._id}}"
+                        class="material-icons right activity js-edit-transaction">
+                      edit
+                    </i>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          <p>{{__ "MFS.transactions.warning.login"}}</p>
+        {{/if}}
       </div>
     </div>
   </div>

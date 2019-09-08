@@ -43,7 +43,8 @@ function generate(
       }
     ],
     startDate = new Date(),
-    endDate = new Date()
+    endDate = new Date(),
+    base = {}
   ) {
 
   const startMoment = moment(startDate)
@@ -87,8 +88,11 @@ function generate(
       referenceNote
     }
 
+    // extend transaction with base
+    const trx = _.extend(transaction, base)
+
     // push transaction to result
-    result.push(transaction)
+    result.push(trx)
   }
 
   // return result

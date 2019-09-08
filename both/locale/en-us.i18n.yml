@@ -27,6 +27,7 @@ access.notAllowed: You do not have permission to view this content.
 
 home.header: Home
 home.content1: Here we tell our story, benefits, and call to action.
+home.welcome: Welcome back
 
 contact.header: Contact Us
 contact.content1: We love hearing from you.
@@ -82,6 +83,7 @@ account.error.emailExists: Email already exists
 account.error.usernameExists: Username already exists
 
 transactions.header: Transactions
+transactions.warning.login: You should be logged in to view this page.
 transactions.table.date: Date
 transactions.table.from: From
 transactions.table.reference: Reference

@@ -4,11 +4,12 @@
       <div class="col s12">
         {{>DynaText tag="h1" class="header" text=(__ "MFS.home.header")}}
         {{#if currentUser}}
-          <p>Welcome back {{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</p>
+          <p>{{__ "MFS.home.welcome"}} {{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</p>
           <a href="#transactions" class="btn">Transactions</a>
         {{else}}
-          <p>You are not logged in yet. Please login using any of the 100 test users. Use any email from user1@expertbox.com to user100@expertbox.com. The password for all users are the same, namely 1234554321.</p>
-          <a href="#signIn" class="btn">Login</a>
+          <p>You are not signed in yet. Please sign in using any of the {{testUserCount}} test users.</p>
+          <p>Use any email from user1@expertbox.com to user{{testUserCount}}@expertbox.com. The password for all users are the same, namely 1234554321.</p>
+          <a href="#signIn" class="btn">Sign in</a>
         {{/if}}
 
 

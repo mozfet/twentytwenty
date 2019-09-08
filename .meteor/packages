@@ -45,8 +45,6 @@ aldeed:autoform@6.3.0
 aldeed:collection2-core 							# Attach schemas to collections for automatic validation
 aldeed:template-extension
 
-
-
 mozfet:meteor-logs@1.0.1
 mozfet:access@0.1.2
 mozfet:dynaview@0.0.6

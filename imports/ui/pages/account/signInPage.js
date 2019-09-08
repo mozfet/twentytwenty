@@ -7,6 +7,15 @@ import '/imports/ui/components/account/signInFormEmailPassword.js'
 import '/imports/ui/components/account/signInThirdParty.js'
 import './signInPage.html'
 
+Template.signInPage.onCreated(() => {
+  const instance = Template.instance()
+  instance.autorun(() => {
+    if (Meteor.userId()) {
+      Router.go('#home')
+    }
+  })
+})
+
 Template.signInPage.events({
   // on click sign out
   'click .js-sign-out-button'(event, instance) {
@@ -18,7 +27,7 @@ Template.signInPage.events({
       else {
         M.toast({html: i18n.__('MFS.account.signOut.success')})
         M.toast({html: 'Sign out succesfull.'})
-        Router.go('home/currentPage=home')
+        Router.go('#home')
       }
     })
   }

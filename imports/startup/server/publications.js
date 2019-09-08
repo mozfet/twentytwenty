@@ -43,5 +43,8 @@ Meteor.publish('global', function () {
 
 
 Meteor.publish('transactions', ownerId => {
-  return Transactions.find({ownerId})
+  const result = Transactions.find({ownerId})
+  Log.log(['debug', 'publish', 'transactions'], `Publishing ${result.count()} `+
+      `transactions of user ${ownerId} to user ${Meteor.userId()}.`)
+  return result
 })
