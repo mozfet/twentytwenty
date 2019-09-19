@@ -1,13 +1,23 @@
 <template name="updateTransactionForm">
 
-  <p>
-    {{formatDate this.transaction.date}}
-    {{this.transaction.merchantAccount}}
-    {{this.transaction.merchantReferenceNote}}
-    &euro; {{this.transaction.amount}}
-  </p>
+  <div class="row" style="margin-top: 25px;">
+    <!-- <div class="col s12"> -->
+      {{formatDate this.transaction.date}}
+      {{this.transaction.merchantAccount}}
+      {{this.transaction.merchantReferenceNote}}
+      &euro; {{this.transaction.amount}}
+    <!-- </div> -->
+  </div>
 
-  {{> afFieldInput name="merchant"}}
-  {{> afFieldInput name="referenceNote"}}
-  {{> afFieldInput name="category"}}
+  <div class="row" style="margin-top: 25px;">
+    <!-- <div class="col s12"> -->
+      {{> afQuickField name="merchant"}}
+    <!-- </div> -->
+    <!-- <div class="col s12"> -->
+      {{> afQuickField name="referenceNote"}}
+    <!-- </div> -->
+    <!-- <div class="col s12"> -->
+      {{> afQuickField name="category"}}
+    <!-- </div> -->
+  </div>
 </template>

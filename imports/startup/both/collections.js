@@ -10,7 +10,7 @@ Transactions = new Mongo.Collection('transactions')
 // set permissions
 Transactions.allow(Access.anyCreateAdminOwnersUpdateRemove)
 
-const schema = new SimpleSchema({
+export const schema = new SimpleSchema({
   ownerId: {
     type: String
   },
@@ -22,14 +22,14 @@ const schema = new SimpleSchema({
   },
   merchant: {
     type: String,
-    label: i18n.__('GYR.transactions.table.merchant')
+    label: i18n.__('MFS.transactions.table.merchant')
   },
   merchantCategory: {
     type: String
   },
   category: {
     type: String,
-    label: i18n.__('GYR.transactions.table.category')
+    label: i18n.__('MFS.transactions.table.category')
   },
   userCategory: {
     type: String,
@@ -40,11 +40,31 @@ const schema = new SimpleSchema({
   },
   referenceNote: {
     type: String,
-    label: i18n.__('GYR.transactions.table.reference')
+    label: i18n.__('MFS.transactions.table.reference')
   },
   amount: {
     type: Number
+  },
+  isReference: {
+    type: Boolean
+  },
+  similarTo: {
+    type: String
   }
 }, { tracker: Tracker })
 
+// attach schema to collection
 Transactions.attachSchema(schema)
+
+// before updating transactions
+Transactions.before.update((userId, doc, fieldNames, modifier, options) => {
+
+  // mark doc as reference
+  modifier.$set = modifier.$set || {}
+  if (!modifier.$set.similarTo) {
+    modifier.$set.isReference = true
+  }
+
+  // Log.log(['debug', 'hooks', 'transactions'], `doc modifier before update:`,
+  //     modifier)
+})

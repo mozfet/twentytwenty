@@ -1,4 +1,5 @@
 import '/imports/startup/both'
+import './methods.js'
 import './routes.js'
 import './screens.js'
 import './locale.js'

@@ -4,17 +4,8 @@ import { Template } from 'meteor/templating'
 import '/imports/ui/components/transactions/updateForm.js'
 import moment from 'moment'
 import { Random } from 'meteor/random'
+import { schema } from '/imports/startup/both/collections.js'
 import './transactionsPage.html'
-
-AutoForm.hooks({
-  editTransaction: {
-    onSubmit(insertDoc, updateDoc, currentDoc) {
-      Log.log(['debug', 'transactions'], `Update:`, insertDoc)
-      this.done()
-      return false
-    }
-  }
-})
 
 // on created
 Template.transactionsPage.onCreated(() => {
@@ -32,7 +23,8 @@ Template.transactionsPage.helpers({
   transactions() {
     const instance = Template.instance()
     const result = Transactions.find(
-        {ownerId: Meteor.userId()}, {sort: {date: -1, merchantAccount: 1}}).fetch()
+        {ownerId: Meteor.userId()}, {sort: {date: -1, merchantAccount: 1}})
+        .fetch()
     return result
   }
 })
@@ -40,17 +32,16 @@ Template.transactionsPage.helpers({
 // events
 Template.transactionsPage.events({
 
-  //on click class
+  // on click class
   'click .js-edit-transaction'(event, instance) {
     const el = $(event.target)
-    console.log('Edit transaction element:', el)
     const transactionId = el.prop('id')
-    console.log('Edit transaction id', transactionId)
+    Log.log(['debug', 'transactions'], `Edit transaction ${transactionId}`)
     const transaction = Transactions.findOne({_id: transactionId})
     const modalData = {
-      id: 'insertExample'+Random.id(),
+      id: 'transactionUpdate'+Random.id(),
       collection: 'Transactions',
-      title: 'Update Category',
+      title: 'Update Transaction',
       type: 'update',
       doc: transaction,
       customForm: {

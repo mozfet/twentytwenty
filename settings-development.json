@@ -9,6 +9,9 @@
       "cdnUrl": "https://d213ily3zhgur4.cloudfront.net"
     }
   },
+  "algorithmia": {
+    "simpleKey": "simhpubDbSxKfv5F9c0l3wsJgLd1"
+  },
   "linkedIn": {
     "clientId": "86qh6ayzfxw0qi",
     "secret": "pPavyhFhvXawgmwq"

@@ -1,9 +1,11 @@
 import moment from 'moment'
 import Moniker from 'moniker'
 import { Access } from 'meteor/mozfet:access'
+import { Log } from 'meteor/mozfet:meteor-logs'
 import { createUser } from '/imports/api/account/api.js'
 import transactions from '/imports/api/trxgen/trxgen.js'
 import { people } from '/imports/api/people/people.js'
+import { findSimilarTransactions } from '/imports/api/transactions/transactions.js'
 
 Meteor.methods({
 

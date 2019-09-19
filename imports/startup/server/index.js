@@ -1,4 +1,6 @@
 import '/imports/startup/both'
+import './collections.js'
+import './methods.js'
 import './account.js'
 import './linkedIn.js'
 import './facebook.js'
