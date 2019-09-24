@@ -16,6 +16,7 @@
     "unsecure": "meteor node imports/scripts/unsecure.js ~/projects/meteor-fullstack/fullstack-config.json",
     "ios": "meteor run ios-device --settings settings-development.json",
     "android": "meteor run android-device --settings settings-development.json",
+    "androidStage": "meteor run android-device --settings /secure/settings-stage.json",
     "icons": "node imports/scripts/icons.js",
     "xcode": "open ~/projects/build/gbaywinetours/ios/project/genyresume.xcodeproj",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
@@ -26,6 +27,7 @@
     "algorithmia": "^0.3.10",
     "bcrypt": "^3.0.2",
     "chalk": "^2.4.1",
+    "chart.js": "^2.8.0",
     "gridfs-stream": "^1.1.1",
     "materialize-css": "^1.0.0",
     "meteor-node-stubs": "^0.4.1",

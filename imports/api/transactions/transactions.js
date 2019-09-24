@@ -21,8 +21,8 @@ export function findSimilarTransactions(transactionReferences,
   files.push([targetTransaction._id, targetTransaction.summary])
 
   const input = {files}
-  Log.log(['debug', 'transaction', 'algorithmia'], `Input to Algorithmia:`,
-      input)
+  // Log.log(['debug', 'transaction', 'algorithmia'], `Input to Algorithmia:`,
+  //     input)
 
   // promise to find similarities
   Algorithmia.algorithmPromise(
@@ -33,14 +33,15 @@ export function findSimilarTransactions(transactionReferences,
 
   // then
   .then(response => {
-    // Log.log(['debug', 'transaction', 'algorithmia'], `Response from Algorithmia`,
-    //     response)
 
     if (response.error) {
       Log.log(['warning', 'api', 'transaction'], `Failed call to Algorithmia:`,
           result);
       return
     }
+
+    Log.log(['debug', 'transaction', 'algorithmia'], `Response from Algorithmia`,
+        response)
 
     // chain
     const match = _.chain(response.result)
@@ -62,8 +63,8 @@ export function findSimilarTransactions(transactionReferences,
         .value()
 
     // if similarity is above 0.8
-    if (match && match.similarity > 0.7) {
-      Log.log(['debug', 'api', 'transaction'], `Found a strong match:`, match)
+    if (match && match.similarity > 0.6) {
+      // Log.log(['debug', 'api', 'transaction'], `Found a strong match:`, match)
 
       // get the match reference
       let reference = match.document1
