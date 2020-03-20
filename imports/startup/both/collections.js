@@ -46,10 +46,12 @@ export const schema = new SimpleSchema({
     type: Number
   },
   isReference: {
-    type: Boolean
+    type: Boolean,
+    required: false
   },
   similarTo: {
-    type: String
+    type: String,
+    required: false
   }
 }, { tracker: Tracker })
 
@@ -64,7 +66,34 @@ Transactions.before.update((userId, doc, fieldNames, modifier, options) => {
   if (!modifier.$set.similarTo) {
     modifier.$set.isReference = true
   }
-
-  // Log.log(['debug', 'hooks', 'transactions'], `doc modifier before update:`,
-  //     modifier)
 })
+
+
+// create new collection
+Bids = new Mongo.Collection('bids')
+
+// set permissions
+Bids.allow(Access.anyCreateAdminOwnersUpdateRemove)
+
+export const bidSchema = new SimpleSchema({
+  email: {
+    type: String,
+    label: i18n.__('MFS.account.form.email.label'),
+    regEx: SimpleSchema.RegEx.Email,
+    autoform: {
+      type: 'email',
+      placeholder: i18n.__('MFS.account.form.email.placeholder')
+    }
+  },
+  amount: {
+    type: Number,
+    label: i18n.__('MFS.bids.schema.amount.label'),
+    autoform: {
+      placeholder: i18n.__('MFS.account.form.email.placeholder')
+    }
+
+  }
+}, { tracker: Tracker })
+
+// attach schema to collection
+Bids.attachSchema(bidSchema)

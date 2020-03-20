@@ -1,5 +1,5 @@
 {
-  "humanName": "ICS TwentyTwenty",
+  "humanName": "TwentyTwenty",
   "humanDescription": "Hindsight is 20/20",
   "shortName": "MFS",
   "userFolder": "/Users/macbookpro",
@@ -26,7 +26,7 @@
   "icons": {
     "backgroundColor": "white",
     "foregroundColor": "black",
-    "font": "~/projects/meteor-fullstack/public/fonts/roboto/Roboto-Bold.woff",
+    "font": "~/projects/TwentyTwenty/public/fonts/roboto/Roboto-Bold.woff",
     "textStrokeColor": "black",
     "textStrokeWidth": "1",
     "textFillColor": "black"
@@ -37,8 +37,7 @@
       "appId": "com.meteor-fullstack"
     }
   },
-  "java": {
-  },
+  "java": {},
   "androidStudio": {
     "buildToolsVersion": "28.0.3"
   }

@@ -36,12 +36,12 @@ export function findSimilarTransactions(transactionReferences,
 
     if (response.error) {
       Log.log(['warning', 'api', 'transaction'], `Failed call to Algorithmia:`,
-          result);
+          response.error);
       return
     }
 
-    Log.log(['debug', 'transaction', 'algorithmia'], `Response from Algorithmia`,
-        response)
+    // Log.log(['debug', 'transaction', 'algorithmia'], `Response from Algorithmia`,
+    //     response)
 
     // chain
     const match = _.chain(response.result)
@@ -62,22 +62,24 @@ export function findSimilarTransactions(transactionReferences,
         // get value of chain
         .value()
 
-    // if similarity is above 0.8
+    // get the match reference
+    let reference = match.document1
+    if (reference === targetTransaction._id) {
+      reference = match.document2
+    }
+
+    // get the reference transaction
+    const referenceTransaction = Transactions.findOne({_id: reference})
+
+    Log.log(['information', 'api', 'transaction'],
+        `${transactionSummary(targetTransaction)} is ${match.similarity} `+
+        `similar to ${transactionSummary(referenceTransaction)}.`)
+
+    // if similarity is above limit
     if (match && match.similarity > 0.6) {
-      // Log.log(['debug', 'api', 'transaction'], `Found a strong match:`, match)
+      Log.log(['debug', 'api', 'transaction'], `Very similar match.`)
 
-      // get the match reference
-      let reference = match.document1
-      if (reference === targetTransaction._id) {
-        reference = match.document2
-      }
-      Log.log(['debug', 'api', 'transaction'],
-          `${targetTransaction._id} is similar to ${reference}`)
-
-      // get the reference transaction
-      const referenceTransaction = Transactions.findOne({_id: reference})
-
-      // mark target as similar to reference
+      // mark target as similar to reference and copy its user visible fields
       Transactions.update({_id: targetTransaction._id},
           {
             $set: {
@@ -89,7 +91,7 @@ export function findSimilarTransactions(transactionReferences,
           })
     }
     else {
-      // Log.log(['debug', 'api', 'transaction'], `Too low match:`, match)
+      Log.log(['debug', 'api', 'transaction'], `Low match.`)
     }
   })
 

@@ -13,9 +13,7 @@ Transactions.after.update((userId, doc, fieldNames, modifier, options) => {
   if (!modifier.$set.similarTo) {
 
     // schedule a reminder email
-    Jobs.run('findAndUpdateSimilarTransactions', userId, {
-      in: {seconds: 0}, priority: 1000
-    })
+    Jobs.run('findAndUpdateSimilarTransactions', userId)
   }
 })
 
@@ -25,7 +23,7 @@ Transactions.after.update((userId, doc, fieldNames, modifier, options) => {
  **/
 Jobs.register({
   'findAndUpdateSimilarTransactions': function(userId) {
-    Log.log(['debug', 'message', 'job'],
+    Log.log(['information', 'message', 'job'],
         'findAndUpdateSimilarTransactions job starting', userId)
 
     // fetch the message
@@ -50,11 +48,11 @@ Jobs.register({
 
     // for each non reference transaction
     for( let nonReference of nonReferences) {
-        Log.log(['debug', 'hooks', 'transaction'], `nonReference:`,
-            nonReference)
 
         // create summary of non reference transaction
         nonReference.summary = transactionSummary(nonReference)
+        Log.log(['debug', 'hooks', 'transaction'], `nonReference summary:`,
+            nonReference.summary)
 
         // match transaction string to reference set string using algoritmia
         // async call to algorimia

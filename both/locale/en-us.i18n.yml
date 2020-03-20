@@ -2,7 +2,7 @@ _locale: 'en-US'
 _splitKey: '.'
 _namespace: "MFS"
 
-title: ICS TwentyTwenty
+title3: TwentyTwenty
 
 navigation.home: Homepage
 navigation.transactions: Transactions
@@ -21,12 +21,14 @@ navigation.signout: Sign Out
 footer.services.header: Meteor Fullstack
 footer.services.content: We do great stuff.
 footer.links.header: Links
-footer.copyright: "&copy; 2019 - Just Kidding"
+footer.copyright: "&copy; 2019 - Just Kidding - This is all Open Source"
 
 access.notAllowed: You do not have permission to view this content.
 
-home.header: Home
-home.content1: Here we tell our story, benefits, and call to action.
+home.header2: Hindsight is 20/20
+home.content10: "Because the future may be uncertain, but <a href='https://www.urbandictionary.com/define.php?term=Hindsight%20is%2020%2F20'>hindsight is always 20/20</a>. This application re-imagines an internet banking application using off the shelf open source code and off the shelf B2B (PaaS) cloud services. This app lets users easily and automatically organise and classify transactions, making it easier to understand bank statements and provide deeper insight into spending patterns and budget management. By being able to edit your transactions into something that you can understand makes transaction information more intuitive and accurate."
+home.content9:  This Desktop/Mobile Web/Android/iOS Application was developed during a hackathon, in a single day, by one developer and enthusiastic support team. This cross platform responsive web appliation combines  off the shelf Open Source components with industry standard cloud hosting services. The Auto Update algorithm makes use of an Natural Language Processing Artificial Intelligence hosted as a service on Algorithmia.com. Meteor Server hosted on AWS via Meteor Galaxy. MongoDB Database hosted on AWS via MongoDB Atlas. Cross Platform, Responsive, Reactive, Mobile First, Full Stack Application, bootstrapped using Meteor Fullstack (Cordova/Meteor application template). The entire app, is written in ES6 JavaScript, and secured using HTTPs, OAUTH2 and standard AWS network security. Source code is stored in GitHub as a public repository with (open source) MIT Licence. Note that the transaction generator took 4 hours to create and was not counted toward development time.
+home.content5: "Animals are suffering and desperately need our help. Four Paws is an international charity that helps animals in need. By bidding in a charity auction for the Ultimate Weapon, a Dual Barrel, Twin Action, Double Cassette with 25 rounds each, firing 4 rounds per second, Monster Nerfgun that was won at the Hackathon where this app was created. Simply email <a href='mailto:wynand@expertbox.com'>wynand@expertbox.com</a> with your best bid amount. The winning bid will be announced here on 1 Oct, the Nerfgun will be awarded to the higest bidder after the bidder made the donation to <a href='https://www.four-paws.org/get-involved/donate'>Four Paws</a>."
 home.welcome: Welcome back
 
 contact.header: Contact Us
