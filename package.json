@@ -49,7 +49,7 @@
     "faker": "^4.1.0",
     "icon-splash-resize": "^1.0.6",
     "selenium-webdriver": "^3.0.0-beta-2",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "sinon": "^7.3.2"
   }
 }
